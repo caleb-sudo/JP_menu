@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>
+            JP Online Menu
+        </title>
+    </head>
+    <body>
+        <nav class="stick">
+            <div class="navItem" id="Cafeteria">
+                Cafeteria
+            </div>
+            <div class="navItem `fa fa-globe`" id="Global">
+                Global
+            </div>
+            <div class="navItem" id="Bakery">
+                Bakery
+            </div>
+        </nav>
+        <div id="itemsCont"></div>
+		<div id="priceCont"></div>
+        <button id="orderBtn" onclick="openOrder()">
+            Order
+        </button>
+        <span id="orderMenu">
+            <div class="modal" id="orderModal">
+                <span>
+                    <div>
+                        <h2 style="text-align: center;">
+                            <b>
+                                Please Verify your order.
+                            </b>
+                            <div class="exitModalBtns" onclick="closeOrder()">
+                                <b>
+                                    X
+                                </b>
+                            </div>
+                        </h2>
+                        <ul id="itemsList"></ul>
+                        <div id="totalPrice"></div>
+                        <button id="verifyBtn" onclick="openInformation()">
+                            Verify
+                        </button>
+                    </div>
+                </span>
+            </div>
+        </span>
+        <span id="information">
+            <div class="modal" id="informationModal">
+                <span>
+                    <div>
+                        <h2 style="text-align: center">
+                            <b>
+                                Please fill out the information.
+                            </b>
+                        </h2>
+                        <div class="exitModalBtns" onclick="closeInformation()">
+                            <b>
+                                X
+                            </b>
+                        </div>
+                        <form id="form">
+                            <div>
+                                <label for="firstName">
+                                    First Name:
+                                </label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Enter your first name here" required>
+                            </div>
+                            <div>
+                                <label for="lastName">
+                                    Last Name:
+                                </label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Enter your last name here" required>
+                            </div>
+                            <div>
+                                <label for="epsbNum">
+                                    EPSB #:
+                                </label>
+                                <input type="number" name="epsbNum" id="epsbNum" placeholder="Enter your EPSB Number here" required>
+                            </div>
+                            <div>
+                                <input type="radio" name="method" id="pickup" required>
+                                <label for="pickup">
+                                    Pickup
+                                </label>
+                                <input type="radio" name="method" id="delivery" required>
+                                <label for="delivery">
+                                    Delivery
+                                </label>
+                            </div>
+                            <div>
+                                <label for="roomNum">
+                                    Room #:
+                                </label>
+                                <input type="text" id="roomNum" name="roomNum" placeholder="Enter the room number here, if delivery">
+                                <span>
+                                    * Only needed for delivery.
+                                </span>
+                            </div>
+                            <div>
+                                <input type="submit" value="Order" id="submitBtn">
+                                <input type="reset" value="reset">
+                            </div>
+                        </form>
+                    </div>
+                </span>
+            </div>
+        </span>
+        <script src="menus.js"></script>
+        <script src="orders.js"></script>
+        <script type="module">
+            //import jsonData from './orders.json' assert { type: 'json' };
+            //console.log(jsonData);
+        </script>
+        <script src="script.js"></script>
+    </body>
+</html>

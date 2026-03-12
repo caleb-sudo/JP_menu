@@ -1,0 +1,117 @@
+body {
+    background: radial-gradient(hsl(209 40% 32%), hsl(209 40% 16%));
+    background-attachment: fixed;
+    background-size: cover;
+    color: rgba(255, 255, 255, 0.7);
+    align-items: center;
+}
+
+.modal {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    overflow: auto;
+    background-color: rgb(0 0 0 / 0.5);
+    border-radius: 16px;
+    padding: 15px 15px 15px 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    top: 3%;
+    left: 4%;
+    width: 90%;
+    height: 90%;
+}
+
+.exitModalBtns {
+    font-size: 25px;
+    cursor: pointer;
+    color: black;
+    float: right;
+    background-color: red;
+}
+
+#navbar {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: none;
+  margin: none;
+}
+
+.stick {
+  position: sticky;
+  top: 0;
+  background-color: #333333;
+  z-index: 1;
+}
+
+.menu {
+  cursor: pointer;
+  padding-left: 90px;
+  padding-right: 90px;
+  padding: 20px;
+}
+
+.menu:hover {
+  border: 1px solid black;
+}
+
+.navItem {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navItem:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.itemCont {
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 0 #050505;
+    background: #24292d;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+}
+
+#itemsList {
+    list-style-type: none;
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 5%;
+}
+
+.orderItem {
+    background-color: gray;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#orderBtn {
+    position: sticky;
+    bottom: 0;
+    background-color: #333333;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    padding: 10px;
+}
