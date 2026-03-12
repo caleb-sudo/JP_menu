@@ -5,7 +5,7 @@ require("dotenv").config();
 const http = require("http");
 const { neon } = require("@neondatabase/serverless");
 
-const sql = neon(process.env.DATABASE_URL);
+const sql = neon(secrets.DATABASE_URL);
 const port = process.env.PORT || 8080;
 
 app.get("/", async (req, res) => {
