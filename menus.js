@@ -9,6 +9,7 @@ const globalMenu = [
         multiOption: false,
         quantity: 0,
         max: 5,
+		isDrink: false,
     },
     {
         id: 1,
@@ -17,6 +18,7 @@ const globalMenu = [
         multiOption: false,
         quantity: 0,
         max: 5,
+		isDrink: false,
     },
     {
         id: 2,
@@ -28,6 +30,7 @@ const globalMenu = [
 
         ],
         max: 5,
+		isDrink: false,
     },
     {
         id: 3,
@@ -36,6 +39,7 @@ const globalMenu = [
         multiOption: false,
         quantity: 0,
         max: 5,
+		isDrink: false,
     },
 ];
 
@@ -59,6 +63,7 @@ const bakeryMenu = [
             },
         ],
         max: 2,
+		isDrink: false,
     },
     {
         id: 1,
@@ -67,6 +72,7 @@ const bakeryMenu = [
         multiOption: false,
         quantity: 0,
         max: 2,
+		isDrink: false,
     },
     {
         id: 2,
@@ -75,6 +81,7 @@ const bakeryMenu = [
         multiOption: false,
         quantity: 0,
         max: 5,
+		isDrink: false,
     },
     {
         id: 3,
@@ -83,6 +90,7 @@ const bakeryMenu = [
         multiOption: false,
         quantity: 0,
         max: 2,
+		isDrink: false,
     },
     {
         id: 4,
@@ -91,6 +99,7 @@ const bakeryMenu = [
         multiOption: false,
         quantity: 0,
         max: 3,
+		isDrink: false,
     },
 ];
 
@@ -102,6 +111,7 @@ const drinks = [
         multiOption: false,
         quantity: 0,
         max: 2,
+		isDrink: true,
     },
     {
         id: "d1",
@@ -110,6 +120,7 @@ const drinks = [
         multiOption: false,
         quantity: 0,
         max: 2,
+		isDrink: true,
     },
     {
         id: "d2",
@@ -118,6 +129,7 @@ const drinks = [
         multiOption: false,
         quantity: 0,
         max: 2,
+		isDrink: true,
     },
     {
         id: "d3",
@@ -133,5 +145,6 @@ const drinks = [
             },
         ],
         max: 2,
+		isDrink: true,
     },
 ];
