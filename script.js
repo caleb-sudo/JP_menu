@@ -6,11 +6,15 @@ const priceCont = document.getElementById('priceCont');
 var activeMenu = cafeMenu;
 var activeMenuName = "Cafe";
 var totalPrice = 0;
+var isDrink = false;
 
 function hide(element, hide) {
     if (hide == true) return element.style.display = "none";
     if (hide == false) return element.style.display = "block";
 }
+
+addItemsToPage(activeMenu);
+addItemsToPage(drinks);
 
 cafe.addEventListener("click", function() {
     itemsCont.replaceChildren();
@@ -23,8 +27,8 @@ cafe.addEventListener("click", function() {
     glob.style.color = "white";
     bake.style.backgroundColor = "#333333";
     bake.style.color = "white";
-    addItemToPage(activeMenu);
-    addItemToPage(drinks);
+    addItemsToPage(activeMenu);
+    addItemsToPage(drinks);
 });
 glob.addEventListener("click", function() {
     itemsCont.replaceChildren();
@@ -37,8 +41,8 @@ glob.addEventListener("click", function() {
     cafe.style.color = "white";
     bake.style.backgroundColor = "#333333";
     bake.style.color = "white";
-    addItemToPage(activeMenu);
-    addItemToPage(drinks);
+    addItemsToPage(activeMenu);
+    addItemsToPage(drinks);
 });
 bake.addEventListener("click", function() {
     itemsCont.replaceChildren();
@@ -51,24 +55,20 @@ bake.addEventListener("click", function() {
     glob.style.color = "white";
     cafe.style.backgroundColor = "#333333";
     cafe.style.color = "white";
-    addItemToPage(activeMenu);
-    addItemToPage(drinks);
+    addItemsToPage(activeMenu);
+    addItemsToPage(drinks);
 });
-
-/*const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-async function test() {
-    while (true) {
-        console.log(window.scrollY);
-        await sleep(5000);
-    }
-}
-test();*/
 
 if (activeMenu.length == 0) {
     itemsCont.innerHTML = "There are currently no items available, check the Global Cafe, and Bakery."
 }
 
-function addItemToPage(items) {
+function isElementDrink(element) {
+	if (element.isDrink) return true;
+	else return false;
+}
+
+function addItemsToPage(items) {
     if (items.length == 0) {
         itemsCont.innerHTML = "There are currently no items available, check the Global Cafe, and Bakery."
     }
@@ -115,7 +115,6 @@ function addItemToPage(items) {
                 showPrice(priceCont);
 			}
         } else {
-            
             for (let j = 0; j < items[i].options.length; j++) {
                 let optName = document.createElement('h3');
                 optName.classList = "optNames";
@@ -167,16 +166,13 @@ function updateCart(id, quant) {
 function showPrice(element) {
     totalPrice = 0;
 	for (let i = 0; i < activeMenu.length; i++) {
-        if (activeMenu[i].quantity <= activeMenu[i].max) totalPrice += activeMenu[i].price * activeMenu[i].quantity;
-		if (totalPrice == 0) element.innerHTML = "$0";
-		else element.innerHTML = "$" + totalPrice;
+		if (activeMenu[i].quantity <= activeMenu[i].max) totalPrice += activeMenu[i].price * activeMenu[i].quantity;
 	}
-}
-
-function calcPrice() {
-    let price = 0;
-    for (let i = 0; i < activeMenu.length; i++) price += activeMenu[i].price * activeMenu[i].quantity;
-    return price;
+	for (let i = 0; i < drinks.length; i++) {
+		if (drinks[i].quantity <= drinks[i].max) totalPrice += drinks[i].price * drinks[i].quantity;
+	}
+	if (totalPrice == 0) element.innerHTML = "$0";
+	else element.innerHTML = "$" + totalPrice;
 }
 
 const orderModal = document.getElementById('orderModal');
@@ -274,7 +270,7 @@ const pickup = document.getElementById('pickup');
 const delivery = document.getElementById('delievery');
 const roomNum = document.getElementById('roomNum');
 
-form.addEventListener("submit", function(event) {
+/*form.addEventListener("submit", function(event) {
     event.preventDefault();
     if (pickup.checked == true && roomNum.value != "") alert("You do not need a room number when picking the food up.");
     //else if (delivery.checked == true && roomNum.value == "") alert("You have picked for your food to be delivered, you need a room number, or else we won't know where you are");
@@ -314,4 +310,4 @@ function readTextFile(file, callback) {
 readTextFile("orders.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
-});
+});*/
