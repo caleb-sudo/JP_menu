@@ -1,20 +1,17 @@
-const express = require('express')
-const app = express();
-require("dotenv").config();
+import { neon } from '@neondatabase/serverless';
 
-const http = require("http");
-const { neon } = require("@neondatabase/serverless");
+export default function Page() {
+  async function create(formData: FormData) {
+    'use server';
+    const sql = neon(`${process.env.DATABASE_URL}`);
+    const comment = formData.get('comment');
+    await sql('INSERT INTO comments (comment) VALUES ($1)', [comment]);
+  }
 
-const sql = neon(secrets.DATABASE_URL);
-const port = process.env.PORT || 8080;
-
-app.get("/", async (req, res) => {
-    const result = await sql`SELECT version()`;
-    const { version } = result[0];
-    res.send(result);
-    res.end(version);
-});
-
-app.listen(port, () => {
-    `Server started on port ${port}`;
-});
+  return (
+    <form action={create}>
+      <input type="text" placeholder="write a comment" name="comment" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
