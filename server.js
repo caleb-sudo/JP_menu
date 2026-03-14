@@ -1,5 +1,5 @@
 const express = require('express')
-const neon = require('@neondatabase/serverless');
+const { neon } = require('@neondatabase/serverless');
 
 const app = express();
 
