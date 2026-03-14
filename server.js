@@ -1,6 +1,25 @@
+const express = require('express')
 const neon = require('@neondatabase/serverless');
 
-export default function Page() {
+const app = express();
+
+const port = process.env.PORT || 8080;
+const sql = neon(process.env.DATABASE_URL);
+
+async function create() {
+  app.get("/", (req, res) => {
+    const result = sql`SELECT version()`;
+    const { version } = result[0];
+    res.send(version);
+  });
+
+  app.listen(port, () => {
+    `Server started on port ${port}`;
+  });
+}
+create();
+
+/*export default function Page() {
   async function create() {
       'use server';
       const sql = neon(`${process.env.DATABASE_URL}`);
@@ -20,4 +39,4 @@ export default function Page() {
       </form>
     );
   }
-}
+}*/
