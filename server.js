@@ -5,7 +5,6 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Create a pool with your Neon connection string
 const { Pool } = pkg;
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -14,8 +13,7 @@ const pool = new Pool({
 
 app.get('/', async (req, res) => {
   try {
-    // Execute a query, replacing 'your_table' with your table name
-    const { rows } = await pool.query('SELECT * FROM your_table;');
+    const { rows } = await pool.query('SELECT * FROM playing_with_neon;');
     res.json(rows);
   } catch (error) {
     res.status(500).json({ error: 'Database query failed' });
