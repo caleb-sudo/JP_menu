@@ -4,10 +4,10 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT;// || 3000;
-//const sql = neon(process.env.DATABASE_URL)
+const sql = process.env.DATABASE_URL
 
 app.get('/', async (req, res) => {
-  res.send(port);
+  res.send(sql);
   /*try {
     const { rows } = await sql.query('SELECT * FROM playing_with_neon;');
     res.json(rows);
