@@ -1,23 +1,28 @@
 const express = require('express')
 const { neon } = require('@neondatabase/serverless');
+require('dotenv').config();
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-const port = process.env.PORT || 8080;
-const sql = neon(process.env.DATABASE_URL);
+// Create a pool with your Neon connection string
+const { Pool } = pkg;
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { require: true },
+});
 
-async function create() {
-  app.get("/", (req, res) => {
-    const result = sql`SELECT version()`;
-    const { version } = result;
-    res.send(version);
-  });
+app.get('/', async (req, res) => {
+  try {
+    // Execute a query, replacing 'your_table' with your table name
+    const { rows } = await pool.query('SELECT * FROM your_table;');
+    res.json(rows);
+  } catch (error) {
+    res.status(500).json({ error: 'Database query failed' });
+  }
+});
 
-  app.listen(port, () => {
-    `Server started on port ${port}`;
-  });
-}
-create();
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
 
 /*export default function Page() {
   async function create() {
