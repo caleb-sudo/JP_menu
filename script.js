@@ -310,8 +310,4 @@ function readTextFile(file, callback) {
 readTextFile("orders.json", function(text){
     var data = JSON.parse(text);
     console.log(data);
-<<<<<<< HEAD
 });*/
-=======
-});*/
->>>>>>> c80d396c7c88418e4614b0ad89cc2a08452de1dd

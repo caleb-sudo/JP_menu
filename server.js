@@ -8,9 +8,7 @@ const sql = neon(process.env.DATABASE_URL);
 
 async function create() {
   app.get("/", (req, res) => {
-    const result = sql`SELECT version()`;
-    const { version } = result;
-    res.send(version);
+    res.send('hello world');
   });
 
   app.listen(port, () => {
