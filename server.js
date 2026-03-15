@@ -3,17 +3,12 @@ const { neon } = require('@neondatabase/serverless');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT;// || 3000;
-const sql = process.env.DATABASE_URL
+const port = process.env.PORT || 3000;
+const sql = neon(`${process.env.DATABASE_URL}`);
 
 app.get('/', async (req, res) => {
-  res.send(sql);
-  /*try {
-    const { rows } = await sql.query('SELECT * FROM playing_with_neon;');
-    res.json(rows);
-  } catch (error) {
-    res.status(500).json({ error: 'Database query failed' });
-  }*/
+    const result = await sql`SELECT name FROM playing_with_neon;`
+    res.send(result);
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
