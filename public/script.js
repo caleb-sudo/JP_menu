@@ -8,18 +8,36 @@ var activeMenuName = "Cafe";
 var totalPrice = 0;
 var isDrink = false;
 
-async function fetchData() {
-  try {
-    const response = await fetch('http://localhost:3000/api/data');
-    const data = await response.json();
-    console.log(data.message);
-    document.getElementById('message-area').textContent = data.message;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-  }
+async function fetchMessage() {
+    try {
+        const response = await fetch('http://localhost:3000/message');
+        const data = await response.json();
+        document.getElementById('message-area').textContent = data.message;
+    } catch (error) {
+        console.error('Error fetching message:', error);
+        document.getElementById('message-area').textContent = 'Failed to load message.';
+    }
 }
 
-fetchData();
+async function sendData() {
+    const dataToSend = { username: 'testuser', value: 100 };
+    try {
+        const response = await fetch('http://localhost:3000/api/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        });
+        const result = await response.json();
+        document.getElementById('response-area').textContent = 'Backend response: ' + result.status;
+    } catch (error) {
+        console.error('Error sending data:', error);
+        document.getElementById('response-area').textContent = 'Failed to send data.';
+    }
+}
+
+fetchMessage();
 
 function hide(element, hide) {
     if (hide == true) return element.style.display = "none";
