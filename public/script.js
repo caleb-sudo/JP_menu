@@ -8,6 +8,19 @@ var activeMenuName = "Cafe";
 var totalPrice = 0;
 var isDrink = false;
 
+async function fetchData() {
+  try {
+    const response = await fetch('http://localhost:3000/api/data');
+    const data = await response.json();
+    console.log(data.message);
+    document.getElementById('message-area').textContent = data.message;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+fetchData();
+
 function hide(element, hide) {
     if (hide == true) return element.style.display = "none";
     if (hide == false) return element.style.display = "block";
