@@ -10,14 +10,17 @@ var isDrink = false;
 
 async function fetchMessage() {
     try {
-        const response = await fetch('http://localhost:3000/message');
+        const response = await fetch('http://localhost:3000/api/data');
         const data = await response.json();
-        document.getElementById('message-area').textContent = data.message;
+        document.getElementById('message-area').textContent = data[0].name;
+        console.log(data)
     } catch (error) {
         console.error('Error fetching message:', error);
         document.getElementById('message-area').textContent = 'Failed to load message.';
     }
 }
+
+fetchMessage();
 
 async function sendData() {
     const dataToSend = { username: 'testuser', value: 100 };
@@ -30,14 +33,13 @@ async function sendData() {
             body: JSON.stringify(dataToSend)
         });
         const result = await response.json();
+        console.log(result.body);
         document.getElementById('response-area').textContent = 'Backend response: ' + result.status;
     } catch (error) {
         console.error('Error sending data:', error);
         document.getElementById('response-area').textContent = 'Failed to send data.';
     }
 }
-
-fetchMessage();
 
 function hide(element, hide) {
     if (hide == true) return element.style.display = "none";
