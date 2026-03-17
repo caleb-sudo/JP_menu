@@ -10,7 +10,7 @@ var isDrink = false;
 
 async function fetchMessage() {
     try {
-        const response = await fetch('http://localhost:3000/api/data');
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/data');
         const data = await response.json();
         document.getElementById('message-area').textContent = data[0].name;
         console.log(data)
@@ -25,7 +25,7 @@ fetchMessage();
 async function sendData() {
     const dataToSend = { username: 'testuser', value: 100 };
     try {
-        const response = await fetch('http://localhost:3000/api/data', {
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
