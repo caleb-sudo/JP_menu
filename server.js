@@ -22,8 +22,70 @@ app.get('/api/data', async (req, res) => {
 
 app.post('/api/data', async (req, res) => {
     //console.log(req.body);
-    const result = await sql`INSERT INTO playing_with_neon(name, value) VALUES ('bye world', 1.90389)`;
+    const result = await sql`INSERT INTO playing_with_neon(name, value) VALUES ('bye world', 1.90389);`;
     return res.send(result);
 });
+
+//bakery deliveries
+app.get('/api/orders/deliveries/bakery', async (req, res) => {
+    const result = await sql`SELECT * FROM "bakeryDelivery";`;
+    return res.send(result);
+});
+app.post('/api/orders/deliveries/bakery', async (req, res) => {
+});
+app.delete('/api/orders/deliveries/bakery', async (req, res) => {
+});
+
+//backery pickup
+app.get('/api/orders/pickup/bakery', async (req, res) => {
+    const result = await sql`SELECT * FROM "bakeryPickup";`;
+    return res.send(result);
+});
+app.post('/api/orders/pickup/bakery', async (req, res) => {
+});
+app.delete('/api/orders/pickup/bakery', async (req, res) => {
+});
+
+//cafe deliveries
+app.get('/api/orders/deliveries/cafe', async (req, res) => {
+    const result = await sql`SELECT * FROM "cafeDelivery";`;
+    return res.send(result);
+});
+app.post('/api/orders/deliveries/cafe', async (req, res) => {
+});
+app.delete('/api/orders/deliveries/cafe', async (req, res) => {
+});
+
+//cafe pickup
+app.get('/api/orders/pickup/cafe', async (req, res) => {
+    const result = await sql`SELECT * FROM "cafePickup";`;
+    return res.send(result);
+});
+app.post('/api/orders/pickup/cafe', async (req, res) => {
+});
+app.delete('/api/orders/pickup/cafe', async (req, res) => {
+});
+
+//global deliveries
+app.get('/api/orders/deliveries/global', async (req, res) => {
+    const result = await sql`SELECT * FROM "globalDelivery";`;
+    return res.send(result);
+});
+app.post('/api/orders/deliveries/global', async (req, res) => {
+});
+app.delete('/api/orders/deliveries/global', async (req, res) => {
+});
+
+//global pickup
+app.get('/api/orders/pickup/global', async (req, res) => {
+    const result = await sql`SELECT * FROM "globalPickup";`;
+    return res.send(result);
+});
+app.post('/api/orders/pickup/global', async (req, res) => {
+});
+app.delete('/api/orders/pickup/global', async (req, res) => {
+});
+
+         
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
