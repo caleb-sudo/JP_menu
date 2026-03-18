@@ -8,39 +8,6 @@ var activeMenuName = "Cafe";
 var totalPrice = 0;
 var isDrink = false;
 
-async function fetchMessage() {
-    try {
-        const response = await fetch('https://jp-menu-psi.vercel.app/api/data');
-        const data = await response.json();
-        document.getElementById('message-area').textContent = data[0].name;
-        console.log(data)
-    } catch (error) {
-        console.error('Error fetching message:', error);
-        document.getElementById('message-area').textContent = 'Failed to load message.';
-    }
-}
-
-fetchMessage();
-
-async function sendData() {
-    const dataToSend = { username: 'testuser', value: 100 };
-    try {
-        const response = await fetch('https://jp-menu-psi.vercel.app/api/data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dataToSend)
-        });
-        const result = await response.json();
-        console.log(result.body);
-        document.getElementById('response-area').textContent = 'Backend response: ' + result.status;
-    } catch (error) {
-        console.error('Error sending data:', error);
-        document.getElementById('response-area').textContent = 'Failed to send data.';
-    }
-}
-
 function hide(element, hide) {
     if (hide == true) return element.style.display = "none";
     if (hide == false) return element.style.display = "block";
@@ -235,7 +202,7 @@ function isValidRoomNum(room) {
 }
 
 function buildOrder() {
-    document.body.style.overflow = "hidden";
+    //document.body.style.overflow = "hidden";
     var modal = document.getElementsByClassName('modal');
     itemsList.replaceChildren();
 	for (let i = 0; i < activeMenu.length; i++) {
@@ -281,18 +248,18 @@ function openOrder() {
 
 function closeOrder() {
     hide(orderModal, true);
-    document.body.style.overflow = "auto";
+    //document.body.style.overflow = "auto";
 }
 
 function openInformation() {
     hide(informationModal, false);
     closeOrder();
-    document.body.style.overflow = "hidden";
+    //document.body.style.overflow = "hidden";
 }
 
 function closeInformation() {
     hide(informationModal, true);
-    document.body.style.overflow = "auto";
+    //document.body.style.overflow = "auto";
 }
 
 const form = document.getElementById('form');
@@ -302,6 +269,52 @@ const id = document.getElementById('epsb');
 const pickup = document.getElementById('pickup');
 const delivery = document.getElementById('delievery');
 const roomNum = document.getElementById('roomNum');
+var pOrD = "";
+
+if (pickup.checked) pOrD = "pickup";
+else pOrD = "deliveries";
+
+if (activeMenu == cafeMenu) form.action = `/api/orders/${pOrD}/cafe`;
+else if (activeMenu == bakeryMenu) form.action = `/api/orders/${pOrD}/cafe`;
+else if (activeMenu == globalMenu) form.action = `/api/orders/${pOrD}/cafe`;
+
+async function sendData() {
+    const dataToSend = {};
+    if (pickup.checked) {
+        dataToSend = { firstName: fn.value, lastName: ln.value, epsb: id.value };
+    } else {
+        dataToSend = { firstName: fn.value, lastName: ln.value, epsb: id.value, roomN: roomNum.value };
+    }
+    try {
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dataToSend)
+        });
+        const result = await response.json();
+        console.log(result.body);
+        document.getElementById('response-area').textContent = 'Backend response: ' + result.status;
+    } catch (error) {
+        console.error('Error sending data:', error);
+        document.getElementById('response-area').textContent = 'Failed to send data.';
+    }
+}
+
+async function fetchMessage() {
+    try {
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/data');
+        const data = await response.json();
+        document.getElementById('message-area').textContent = data[0].name;
+        console.log(data)
+    } catch (error) {
+        console.error('Error fetching message:', error);
+        document.getElementById('message-area').textContent = 'Failed to load message.';
+    }
+}
+
+fetchMessage();
 
 /*form.addEventListener("submit", function(event) {
     event.preventDefault();

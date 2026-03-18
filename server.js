@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
@@ -9,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -21,7 +22,6 @@ app.get('/api/data', async (req, res) => {
 });
 
 app.post('/api/data', async (req, res) => {
-    //console.log(req.body);
     const result = await sql`INSERT INTO playing_with_neon(name, value) VALUES ('bye world', 1.90389);`;
     return res.send(result);
 });
@@ -32,6 +32,10 @@ app.get('/api/orders/deliveries/bakery', async (req, res) => {
     return res.send(result);
 });
 app.post('/api/orders/deliveries/bakery', async (req, res) => {
+    const { firstName, lastName, epsbNum, price, roomNum } = req.body;
+    const items = { "1": "Hello", "2": "world" };
+    await sql`INSERT INTO bakeryDelivery (firstName, lastName, epsb, price, orderTime, items, roomNum) VALUES (${firstName}, ${lastName}, ${epsbNum}, ${price}, NOW(), ${items}, ${roomNum})`;
+    return res.send("Order recived!!");
 });
 app.delete('/api/orders/deliveries/bakery', async (req, res) => {
 });
@@ -86,6 +90,5 @@ app.post('/api/orders/pickup/global', async (req, res) => {
 app.delete('/api/orders/pickup/global', async (req, res) => {
 });
 
-         
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
