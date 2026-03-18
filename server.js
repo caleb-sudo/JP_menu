@@ -35,6 +35,7 @@ app.post('/api/orders/deliveries/bakery', async (req, res) => {
     const { firstName, lastName, epsbNum, price, roomNum } = req.body;
     const items = { "1": "Hello", "2": "world" };
     const result = await sql`INSERT INTO bakeryDelivery (firstName, lastName, epsb, price, orderTime, items, roomNum) VALUES (${firstName}, ${lastName}, ${epsbNum}, 100, NOW(), ${items}, ${roomNum})`;
+    console.log("hello world");
     return res.send(result);
 });
 app.delete('/api/orders/deliveries/bakery', async (req, res) => {
