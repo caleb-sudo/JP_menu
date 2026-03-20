@@ -6,6 +6,26 @@ body {
     align-items: center;
 }
 
+nav {
+  display: flex;
+  justify-content: center;
+  padding: none;
+  margin: none;
+}
+
+footer {
+    text-align: center;
+    background-color: #333333;
+    padding: 20px;
+    margin-top: 0.5%;
+}
+
+form {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
 .modal {
     display: none;
     z-index: 1;
@@ -35,13 +55,6 @@ body {
     padding: 0;
     overflow: hidden;
     background-color: #333333;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  padding: none;
-  margin: none;
 }
 
 .stick {
@@ -98,12 +111,6 @@ nav {
     background-color: gray;
     padding: 5px;
     border-radius: 10px;
-}
-
-form {
-    display: grid;
-    justify-content: center;
-    align-items: center;
 }
 
 #orderBtn {
