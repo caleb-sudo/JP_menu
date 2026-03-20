@@ -16,6 +16,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 const port = process.env.PORT || 3000;
 const sql = neon(`${process.env.DATABASE_URL}`);
 
+app.get('/', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/orders', (req, res) => {
+    return res.sendFile(path.join(__dirname, 'public', 'orderTracker.html'));
+});
+
 app.get('/api/data', async (req, res) => {
     const result = await sql`SELECT name FROM playing_with_neon;`;
     return res.send(result);
