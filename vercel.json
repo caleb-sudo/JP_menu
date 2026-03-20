@@ -12,12 +12,12 @@
     ],
     "rewrites": [
         {
-            "src": "/(.*)",
+            "source": "/(.*)",
             "dest": "server.js"
         },
         {
-            "src": "/(.*)",
-            "dest": "ordersServer.js"
+            "source": "/(.*)",
+            "destination": "ordersServer.js"
         }
     ]
 }
