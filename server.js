@@ -34,19 +34,19 @@ app.post('/api/data', async (req, res) => {
     return res.send(result);
 });
 
-//bakery deliveries
-app.get('/api/orders/deliveries/bakery', async (req, res) => {
+//bakery delivery
+app.get('/api/orders/delivery/bakery', async (req, res) => {
     const result = await sql`SELECT * FROM "bakeryDelivery";`;
     return res.send(result);
 });
-app.post('/api/orders/deliveries/bakery', async (req, res) => {
+app.post('/api/orders/delivery/bakery', async (req, res) => {
     const { firstName, lastName, epsbNum, price, roomNum } = req.body;
     const items = { "1": "Hello", "2": "world" };
     const result = await sql`INSERT INTO bakeryDelivery (firstName, lastName, epsb, price, orderTime, items, roomNum) VALUES (${firstName}, ${lastName}, ${epsbNum}, 100, NOW(), ${items}, ${roomNum})`;
     console.log("hello world");
     return res.send(result);
 });
-app.delete('/api/orders/deliveries/bakery', async (req, res) => {
+app.delete('/api/orders/delivery/bakery', async (req, res) => {
 });
 
 //backery pickup
@@ -59,14 +59,14 @@ app.post('/api/orders/pickup/bakery', async (req, res) => {
 app.delete('/api/orders/pickup/bakery', async (req, res) => {
 });
 
-//cafe deliveries
-app.get('/api/orders/deliveries/cafe', async (req, res) => {
+//cafe delivery
+app.get('/api/orders/delivery/cafe', async (req, res) => {
     const result = await sql`SELECT * FROM "cafeDelivery";`;
     return res.send(result);
 });
-app.post('/api/orders/deliveries/cafe', async (req, res) => {
+app.post('/api/orders/delivery/cafe', async (req, res) => {
 });
-app.delete('/api/orders/deliveries/cafe', async (req, res) => {
+app.delete('/api/orders/delivery/cafe', async (req, res) => {
 });
 
 //cafe pickup
@@ -79,14 +79,14 @@ app.post('/api/orders/pickup/cafe', async (req, res) => {
 app.delete('/api/orders/pickup/cafe', async (req, res) => {
 });
 
-//global deliveries
-app.get('/api/orders/deliveries/global', async (req, res) => {
+//global delivery
+app.get('/api/orders/delivery/global', async (req, res) => {
     const result = await sql`SELECT * FROM "globalDelivery";`;
     return res.send(result);
 });
-app.post('/api/orders/deliveries/global', async (req, res) => {
+app.post('/api/orders/delivery/global', async (req, res) => {
 });
-app.delete('/api/orders/deliveries/global', async (req, res) => {
+app.delete('/api/orders/delivery/global', async (req, res) => {
 });
 
 //global pickup
