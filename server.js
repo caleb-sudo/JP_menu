@@ -50,7 +50,7 @@ app.post('/api/orders/delivery/bakery', async (req, res) => {
     console.log("hello world");
     res.send(result);
 });
-app.delete('/api/orders/delivery/bakery', async (req, res) => {
+app.delete('/api/orders/delivery/bakery:id', async (req, res) => {
 });
 
 //backery pickup
@@ -64,7 +64,7 @@ app.get('/api/orders/pickup/bakery/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/bakery', async (req, res) => {
 });
-app.delete('/api/orders/pickup/bakery', async (req, res) => {
+app.delete('/api/orders/pickup/bakery:id', async (req, res) => {
 });
 
 //cafe delivery
@@ -78,7 +78,7 @@ app.get('/api/orders/delivery/cafe/count', async (req, res) => {
 });
 app.post('/api/orders/delivery/cafe', async (req, res) => {
 });
-app.delete('/api/orders/delivery/cafe', async (req, res) => {
+app.delete('/api/orders/delivery/cafe:id', async (req, res) => {
 });
 
 //cafe pickup
@@ -92,7 +92,7 @@ app.get('/api/orders/pickup/cafe/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/cafe', async (req, res) => {
 });
-app.delete('/api/orders/pickup/cafe', async (req, res) => {
+app.delete('/api/orders/pickup/cafe:id', async (req, res) => {
 });
 
 //global delivery
@@ -106,7 +106,7 @@ app.get('/api/orders/delivery/global/count', async (req, res) => {
 });
 app.post('/api/orders/delivery/global', async (req, res) => {
 });
-app.delete('/api/orders/delivery/global', async (req, res) => {
+app.delete('/api/orders/delivery/global:id', async (req, res) => {
 });
 
 //global pickup
@@ -120,7 +120,7 @@ app.get('/api/orders/pickup/global/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/global', async (req, res) => {
 });
-app.delete('/api/orders/pickup/global', async (req, res) => {
+app.delete('/api/orders/pickup/global:id', async (req, res) => {
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
