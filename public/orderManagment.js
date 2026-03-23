@@ -61,54 +61,54 @@ function createTable(data, count) {
 }
 
 cp.addEventListener('click', async function() {
-    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
-    const response = await fetch(link);
-    const countRes = await fetch(`${link}/count`);
+    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
 });
 
 cd.addEventListener('click', async function() {
-    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
-    const response = await fetch(link);
-    const countRes = await fetch(`${link}/count`);
+    //link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
 });
 
 gp.addEventListener('click', async function() {
-    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
-    const response = await fetch(link);
-    const countRes = await fetch(`${link}/count`);
+    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
 });
                    
 gd.addEventListener('click', async function() {
-    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
-    const response = await fetch(link);
-    const countRes = await fetch(`${link}/count`);
+    //link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
 });
 
 bp.addEventListener('click', async function() {
-    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
-    const response = await fetch(link);
-    const countRes = await fetch(`${link}/count`);
+    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
 });
 
 gd.addEventListener('click', async function() {
-    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
-    const response = await fetch(link);
-    const countRes = await fetch(`${link}/count`);
+    //link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
