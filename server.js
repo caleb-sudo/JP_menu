@@ -83,7 +83,7 @@ app.delete('/api/orders/delivery/cafe', async (req, res) => {
 
 //cafe pickup
 app.get('/api/orders/pickup/cafe', async (req, res) => {
-    const result = await sql`SELECT * FROM cafePickup;`;
+    const result = await sql`SELECT firstName FROM cafePickup;`;
     res.send(result);
 });
 app.get('/api/orders/pickup/cafe/count', async (req, res) => {
