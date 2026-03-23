@@ -5,56 +5,62 @@ const gd = document.getElementById('GlobalD');
 const bp = document.getElementById('BakeryP');
 const bd = document.getElementById('BakeryD');
 
+const table = document.getElementById('ordersTable');
+
 function createTable() {
 
 }
 
-cp.addEventListener('click', async function(e) {
-    e.preventDefault();
-    try {
-        const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
-        const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
-        const count = countRes.json();
-        document.getElementById('test').textContent = count[0].count;
-        var data = await response.json();
-        var tableRow = document.createElement('tr');
-    } catch (error) {
-        console.error('Error fetching message:', error);
-        document.getElementById('message-area').textContent = 'Failed to load message.';
+cp.addEventListener('click', async function() {
+    table.replaceChildren();
+    table.innerHTML = `
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer EPSB</th>
+        <th>Price</th>
+        <th>Time of Order</th>
+        <th>Items</th>
+        <th>Delete</th>
+    </tr>
+    `
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+    const data = await response.json();
+    const count = await countRes.json();
+    for (let i = 0; i < Number(count[0].count); i++) {
+        var tr = document.createElement('tr');
+
+        var id = document.createElement('tr');
+        id.innerHTML = data[i].orderNum;
+        tr.appendChild(id);
+
+        var name = document.createElement('td');
+        name.innerHTML = data[i].firstname + " " + data[i].lastname;
+        tr.appendChild(name);
+
+        var epsb = document.createElement('td');
+        epsb.innerHTML = data[i].epsb;
+        tr.appendChild(epsb);
+
+        var price = document.createElement('td');
+        price.innerHTML = "$" + data[i].price;
+        tr.appendChild(price);
+
+        var timeOfOrder = document.createElement('td');
+        timeOfOrder.innerHTML = data[i].ordertime;
+        tr.appendChild(timeOfOrder);
+
+        var items = document.createElement('td');
+        items.innerHTML = data[i].items
+        tr.appendChild(items);
+
+        var del = document.createElement('td');
+        var delBtn = document.createElement('button');
+        delBtn.innerHTML = "delete order";
+        del.appendChild(delBtn);
+        tr.appendChild(del);
+
+        table.appendChild(tr);
     }
 });
-
-/*cd.addEventListener('click', async function(e) {
-    e.preventDefault();
-    fetch('/api/orders/delivery/cafe', {
-        
-    })
-});
-
-gp.addEventListener('click', async function(e) {
-    e.preventDefault();
-    fetch('/api/orders/pickup/global', {
-        
-    })
-});
-
-gd.addEventListener('click', async function(e) {
-    e.preventDefault();
-    fetch('/api/orders/delivery/global', {
-        
-    })
-});
-
-bp.addEventListener('click', async function(e) {
-    e.preventDefault();
-    fetch('/api/orders/pickup/bakery', {
-        
-    })
-});
-
-bd.addEventListener('click', async function(e) {
-    e.preventDefault();
-    fetch('/api/orders/delivery/bakery', {
-        
-    })
-});*/
