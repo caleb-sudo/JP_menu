@@ -62,8 +62,8 @@ function createTable(data, count) {
 
 cp.addEventListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+    const response = await fetch(link);
+    const countRes = await fetch(`${link}/count`);
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
@@ -71,8 +71,8 @@ cp.addEventListener('click', async function() {
 
 cd.addEvenListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe/count');
+    const response = await fetch(link);
+    const countRes = await fetch(`${link}/count`);
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
@@ -80,8 +80,8 @@ cd.addEvenListener('click', async function() {
 
 gp.addEvenListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global/count');
+    const response = await fetch(link);
+    const countRes = await fetch(`${link}/count`);
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
@@ -89,8 +89,8 @@ gp.addEvenListener('click', async function() {
                    
 gd.addEvenListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global/count');
+    const response = await fetch(link);
+    const countRes = await fetch(`${link}/count`);
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
@@ -98,8 +98,8 @@ gd.addEvenListener('click', async function() {
 
 bp.addEvenListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery/count');
+    const response = await fetch(link);
+    const countRes = await fetch(`${link}/count`);
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
@@ -107,15 +107,15 @@ bp.addEvenListener('click', async function() {
 
 gd.addEvenListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery/count');
+    const response = await fetch(link);
+    const countRes = await fetch(`${link}/count`);
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
 }
 
-async function deleteRow() {
-    const response = await fetch(link, {
-        method: 'DELETE'     
+async function deleteRow(id) {
+    const response = await fetch(`${link}:${id}`, {
+        method: 'DELETE'
     });
 }
