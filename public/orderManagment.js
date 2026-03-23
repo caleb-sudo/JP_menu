@@ -12,8 +12,8 @@ function createTable() {
 cp.addEventListener('click', async function(e) {
     e.preventDefault();
     try {
-        const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
-        const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/cafe-pickup');
+        const countRes = await fetch('https://jp-menu-psi.vercel.app/api/cafe-pickup/count');
         const count = countRes.text();
         document.getElementById('test').innerHTML = count;
         var data = await response.json();
@@ -24,7 +24,7 @@ cp.addEventListener('click', async function(e) {
     }
 });
 
-cd.addEventListener('click', async function(e) {
+/*cd.addEventListener('click', async function(e) {
     e.preventDefault();
     fetch('/api/orders/delivery/cafe', {
         
@@ -57,4 +57,4 @@ bd.addEventListener('click', async function(e) {
     fetch('/api/orders/delivery/bakery', {
         
     })
-});
+});*/
