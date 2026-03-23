@@ -83,8 +83,12 @@ app.delete('/api/orders/delivery/cafe', async (req, res) => {
 
 //cafe pickup
 app.get('/api/orders/pickup/cafe', async (req, res) => {
-    const result = await sql`SELECT lastname FROM cafePickup;`;
-    res.send(result);
+    try {
+        const result = await sql`SELECT * FROM cafePickup;`;
+        res.send(result);
+    } catch (error) {
+        console.error("Error: " + error)
+    }
 });
 app.get('/api/orders/pickup/cafe/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM cafePickup;`;
