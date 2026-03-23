@@ -9,7 +9,7 @@ function createTable() {
 
 }
 
-cp.addEventListener('click', async function(e) {
+/*cp.addEventListener('click', async function(e) {
     e.preventDefault();
     try {
         const response = await fetch('https://jp-menu-psi.vercel.app/api/cafe-pickup');
@@ -22,7 +22,7 @@ cp.addEventListener('click', async function(e) {
         console.error('Error fetching message:', error);
         document.getElementById('message-area').textContent = 'Failed to load message.';
     }
-});
+});*/
 
 /*cd.addEventListener('click', async function(e) {
     e.preventDefault();
