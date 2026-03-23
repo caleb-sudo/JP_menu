@@ -35,92 +35,92 @@ app.post('/api/data', async (req, res) => {
 });
 
 //bakery delivery
-app.get('/api/orders/delivery/bakery', async (req, res) => {
+app.get('/api/bakery-delivery', async (req, res) => {
     const result = await sql`SELECT * FROM bakeryDelivery;`;
     res.send(result);
 });
-app.get('/api/orders/delivery/bakery/count', async (req, res) => {
+app.get('/api/bakery-delivery/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM bakeryDelivery;`;
     res.send(result);
 });
-app.post('/api/orders/delivery/bakery', async (req, res) => {
+app.post('/api/bakery-delivery', async (req, res) => {
     const { firstName, lastName, epsbNum, price, roomNum } = req.body;
     const items = { "1": "Hello", "2": "world" };
     const result = await sql`INSERT INTO bakeryDelivery (firstName, lastName, epsb, price, orderTime, items, roomNum) VALUES (${firstName}, ${lastName}, ${epsbNum}, 100, NOW(), ${items}, ${roomNum})`;
     console.log("hello world");
     res.send(result);
 });
-app.delete('/api/orders/delivery/bakery', async (req, res) => {
+app.delete('/api/bakery-delivery', async (req, res) => {
 });
 
 //backery pickup
-app.get('/api/orders/pickup/bakery', async (req, res) => {
+app.get('/api/bakery-pickup', async (req, res) => {
     const result = await sql`SELECT * FROM bakeryPickup;`;
     res.send(result);
 });
-app.get('/api/orders/pickup/bakery/count', async (req, res) => {
+app.get('/api/bakery-pickup/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM bakeryPickup;`;
     res.send(result);
 });
-app.post('/api/orders/pickup/bakery', async (req, res) => {
+app.post('/api/bakery-pickup', async (req, res) => {
 });
-app.delete('/api/orders/pickup/bakery', async (req, res) => {
+app.delete('/api/bakery-pickup', async (req, res) => {
 });
 
 //cafe delivery
-app.get('/api/orders/delivery/cafe', async (req, res) => {
+app.get('/api/cafe-delivery', async (req, res) => {
     const result = await sql`SELECT * FROM cafeDelivery;`;
     res.send(result);
 });
-app.get('/api/orders/delivery/cafe/count', async (req, res) => {
+app.get('/api/cafe-delivery/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM cafeDelivery;`;
     res.send(result);
 });
-app.post('/api/orders/delivery/cafe', async (req, res) => {
+app.post('/api/cafe-delivery', async (req, res) => {
 });
-app.delete('/api/orders/delivery/cafe', async (req, res) => {
+app.delete('/api/cafe-delivery', async (req, res) => {
 });
 
 //cafe pickup
-app.get('/api/orders/pickup/cafe', async (req, res) => {
+app.get('/api/cafe-pickup', async (req, res) => {
     const result = await sql`SELECT firstName FROM cafePickup;`;
     res.send(result);
 });
-app.get('/api/orders/pickup/cafe/count', async (req, res) => {
+app.get('/api/cafe-pickup/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM cafePickup;`;
     res.send(result);
 });
-app.post('/api/orders/pickup/cafe', async (req, res) => {
+app.post('/api/cafe-pickup', async (req, res) => {
 });
-app.delete('/api/orders/pickup/cafe', async (req, res) => {
+app.delete('/api/cafe-pickup', async (req, res) => {
 });
 
 //global delivery
-app.get('/api/orders/delivery/global', async (req, res) => {
+app.get('/api/global-delivery', async (req, res) => {
     const result = await sql`SELECT * FROM globalDelivery;`;
     res.send(result);
 });
-app.get('/api/orders/delivery/global/count', async (req, res) => {
+app.get('/api/global-delivery/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM globalDelivery;`;
     res.send(result);
 });
-app.post('/api/orders/delivery/global', async (req, res) => {
+app.post('/api/global-delivery', async (req, res) => {
 });
-app.delete('/api/orders/delivery/global', async (req, res) => {
+app.delete('/api/global-delivery', async (req, res) => {
 });
 
 //global pickup
-app.get('/api/orders/pickup/global', async (req, res) => {
+app.get('/api/global_pickup', async (req, res) => {
     const result = await sql`SELECT * FROM globalPickup;`;
     res.send(result);
 });
-app.get('/api/orders/pickup/global/count', async (req, res) => {
+app.get('/api/global_pickup/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM globalPickup;`;
     res.send(result);
 });
-app.post('/api/orders/pickup/global', async (req, res) => {
+app.post('/api/global_pickup', async (req, res) => {
 });
-app.delete('/api/orders/pickup/global', async (req, res) => {
+app.delete('/api/global_pickup', async (req, res) => {
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
