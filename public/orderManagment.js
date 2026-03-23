@@ -44,12 +44,14 @@ function createTable(data, count) {
         tr.appendChild(timeOfOrder);
 
         var items = document.createElement('td');
-        items.innerHTML = data[i].items
+        items.innerHTML = data[i].items;
         tr.appendChild(items);
 
         var del = document.createElement('td');
         var delBtn = document.createElement('button');
         delBtn.innerHTML = "delete order";
+        delBtn.classList = "deleteRowBtn";
+        delBtn.id = `delBtn${i}`;
         del.appendChild(delBtn);
         tr.appendChild(del);
 
