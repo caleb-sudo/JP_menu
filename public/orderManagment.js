@@ -15,7 +15,7 @@ cp.addEventListener('click', async function(e) {
         const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
         const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
         const count = countRes.text();
-        document.getElementById('test').innerHTML = count[0];
+        document.getElementById('test').innerHTML = count;
         var data = await response.json();
         var tableRow = document.createElement('tr');
     } catch (error) {
