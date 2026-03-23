@@ -39,6 +39,10 @@ app.get('/api/orders/delivery/bakery', async (req, res) => {
     const result = await sql`SELECT * FROM "bakeryDelivery";`;
     res.send(result);
 });
+app.get('/api/orders/delivery/bakery/count', async (req, res) => {
+    const result = await sql`SELECT COUNT(*) FROM "bakeryDelivery";`;
+    res.send(result);
+});
 app.post('/api/orders/delivery/bakery', async (req, res) => {
     const { firstName, lastName, epsbNum, price, roomNum } = req.body;
     const items = { "1": "Hello", "2": "world" };
@@ -54,6 +58,10 @@ app.get('/api/orders/pickup/bakery', async (req, res) => {
     const result = await sql`SELECT * FROM "bakeryPickup";`;
     res.send(result);
 });
+app.get('/api/orders/pickup/bakery/count', async (req, res) => {
+    const result = await sql`SELECT COUNT(*) FROM "bakeryPickup";`;
+    res.send(result);
+});
 app.post('/api/orders/pickup/bakery', async (req, res) => {
 });
 app.delete('/api/orders/pickup/bakery', async (req, res) => {
@@ -62,6 +70,10 @@ app.delete('/api/orders/pickup/bakery', async (req, res) => {
 //cafe delivery
 app.get('/api/orders/delivery/cafe', async (req, res) => {
     const result = await sql`SELECT * FROM "cafeDelivery";`;
+    res.send(result);
+});
+app.get('/api/orders/delivery/cafe/count', async (req, res) => {
+    const result = await sql`SELECT COUNT(*) FROM "cafeDelivery";`;
     res.send(result);
 });
 app.post('/api/orders/delivery/cafe', async (req, res) => {
@@ -88,6 +100,10 @@ app.get('/api/orders/delivery/global', async (req, res) => {
     const result = await sql`SELECT * FROM "globalDelivery";`;
     res.send(result);
 });
+app.get('/api/orders/delivery/global/count', async (req, res) => {
+    const result = await sql`SELECT COUNT(*) FROM "globalDelivery";`;
+    res.send(result);
+});
 app.post('/api/orders/delivery/global', async (req, res) => {
 });
 app.delete('/api/orders/delivery/global', async (req, res) => {
@@ -96,6 +112,10 @@ app.delete('/api/orders/delivery/global', async (req, res) => {
 //global pickup
 app.get('/api/orders/pickup/global', async (req, res) => {
     const result = await sql`SELECT * FROM "globalPickup";`;
+    res.send(result);
+});
+app.get('/api/orders/pickup/global/count', async (req, res) => {
+    const result = await sql`SELECT COUNT(*) FROM "globalPickup";`;
     res.send(result);
 });
 app.post('/api/orders/pickup/global', async (req, res) => {
