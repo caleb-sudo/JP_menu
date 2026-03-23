@@ -4,6 +4,7 @@ const gp = document.getElementById('GlobalP');
 const gd = document.getElementById('GlobalD');
 const bp = document.getElementById('BakeryP');
 const bd = document.getElementById('BakeryD');
+const link = "";
 
 const table = document.getElementById('ordersTable');
 
@@ -60,6 +61,7 @@ function createTable(data, count) {
 }
 
 cp.addEventListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
     const data = await response.json();
@@ -68,6 +70,7 @@ cp.addEventListener('click', async function() {
 });
 
 cd.addEvenListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe/count');
     const data = await response.json();
@@ -76,6 +79,7 @@ cd.addEvenListener('click', async function() {
 }
 
 gp.addEvenListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global/count');
     const data = await response.json();
@@ -84,6 +88,7 @@ gp.addEvenListener('click', async function() {
 }
                    
 gd.addEvenListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global/count');
     const data = await response.json();
@@ -92,6 +97,7 @@ gd.addEvenListener('click', async function() {
 }
 
 bp.addEvenListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery/count');
     const data = await response.json();
@@ -100,9 +106,16 @@ bp.addEvenListener('click', async function() {
 }
 
 gd.addEvenListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery/count');
     const data = await response.json();
     const count = await countRes.json();
     createTable(data, count);
+}
+
+async function deleteRow() {
+    const response = await fetch(link, {
+        method: 'DELETE'     
+    });
 }
