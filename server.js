@@ -36,7 +36,7 @@ app.post('/api/data', async (req, res) => {
 
 //bakery delivery
 app.get('/api/orders/delivery/bakery', async (req, res) => {
-    const result = await sql`SELECT * FROM bakeryDelivery;`;
+    const result = await sql`SELECT * FROM "bakeryDelivery";`;
     res.send(result);
 });
 app.post('/api/orders/delivery/bakery', async (req, res) => {
@@ -51,7 +51,7 @@ app.delete('/api/orders/delivery/bakery', async (req, res) => {
 
 //backery pickup
 app.get('/api/orders/pickup/bakery', async (req, res) => {
-    const result = await sql`SELECT * FROM bakeryPickup;`;
+    const result = await sql`SELECT * FROM "bakeryPickup";`;
     res.send(result);
 });
 app.post('/api/orders/pickup/bakery', async (req, res) => {
@@ -61,7 +61,7 @@ app.delete('/api/orders/pickup/bakery', async (req, res) => {
 
 //cafe delivery
 app.get('/api/orders/delivery/cafe', async (req, res) => {
-    const result = await sql`SELECT * FROM cafeDelivery;`;
+    const result = await sql`SELECT * FROM "cafeDelivery";`;
     res.send(result);
 });
 app.post('/api/orders/delivery/cafe', async (req, res) => {
@@ -71,7 +71,11 @@ app.delete('/api/orders/delivery/cafe', async (req, res) => {
 
 //cafe pickup
 app.get('/api/orders/pickup/cafe', async (req, res) => {
-    const result = await sql`SELECT * FROM cafePickup;`;
+    const result = await sql`SELECT * FROM "cafePickup";`;
+    res.send(result);
+});
+app.get('/api/orders/pickup/cafe/count', async (req, res) => {
+    const result = await sql`SELECT COUNT(*) FROM "cafePickup";`;
     res.send(result);
 });
 app.post('/api/orders/pickup/cafe', async (req, res) => {
@@ -81,7 +85,7 @@ app.delete('/api/orders/pickup/cafe', async (req, res) => {
 
 //global delivery
 app.get('/api/orders/delivery/global', async (req, res) => {
-    const result = await sql`SELECT * FROM globalDelivery;`;
+    const result = await sql`SELECT * FROM "globalDelivery";`;
     res.send(result);
 });
 app.post('/api/orders/delivery/global', async (req, res) => {
@@ -91,7 +95,7 @@ app.delete('/api/orders/delivery/global', async (req, res) => {
 
 //global pickup
 app.get('/api/orders/pickup/global', async (req, res) => {
-    const result = await sql`SELECT * FROM globalPickup;`;
+    const result = await sql`SELECT * FROM "globalPickup";`;
     res.send(result);
 });
 app.post('/api/orders/pickup/global', async (req, res) => {

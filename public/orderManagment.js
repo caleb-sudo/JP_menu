@@ -9,20 +9,20 @@ function createTable() {
 
 }
 
-/*cp.addEventListener('click', async function(e) {
+cp.addEventListener('click', async function(e) {
     e.preventDefault();
     try {
-        const response = await fetch('https://jp-menu-psi.vercel.app/api/cafe-pickup');
-        const countRes = await fetch('https://jp-menu-psi.vercel.app/api/cafe-pickup/count');
-        const count = countRes.text();
-        document.getElementById('test').innerHTML = count;
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
+        const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+        const count = countRes.json();
+        document.getElementById('test').textContent = count[0].count;
         var data = await response.json();
         var tableRow = document.createElement('tr');
     } catch (error) {
         console.error('Error fetching message:', error);
         document.getElementById('message-area').textContent = 'Failed to load message.';
     }
-});*/
+});
 
 /*cd.addEventListener('click', async function(e) {
     e.preventDefault();
