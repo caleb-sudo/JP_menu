@@ -5,42 +5,54 @@ const gd = document.getElementById('GlobalD');
 const bp = document.getElementById('BakeryP');
 const bd = document.getElementById('BakeryD');
 
-cp.addEventListener('click', function(e) {
-    e.preventDefault();
-    fetch('/api/orders/pickup/cafe', {
+function createTable() {
 
-    })
+}
+
+cp.addEventListener('click', async function(e) {
+    e.preventDefault();
+    try {
+        const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
+        const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+        const count = countRes.text();
+        document.getElementById('test').innerHTML = count[0];
+        var data = await response.json();
+        var tableRow = document.createElement('tr');
+    } catch (error) {
+        console.error('Error fetching message:', error);
+        document.getElementById('message-area').textContent = 'Failed to load message.';
+    }
 });
 
-cd.addEventListener('click', function(e) {
+cd.addEventListener('click', async function(e) {
     e.preventDefault();
     fetch('/api/orders/delivery/cafe', {
         
     })
 });
 
-gp.addEventListener('click', function(e) {
+gp.addEventListener('click', async function(e) {
     e.preventDefault();
     fetch('/api/orders/pickup/global', {
         
     })
 });
 
-gd.addEventListener('click', function(e) {
+gd.addEventListener('click', async function(e) {
     e.preventDefault();
     fetch('/api/orders/delivery/global', {
         
     })
 });
 
-bp.addEventListener('click', function(e) {
+bp.addEventListener('click', async function(e) {
     e.preventDefault();
     fetch('/api/orders/pickup/bakery', {
         
     })
 });
 
-bd.addEventListener('click', function(e) {
+bd.addEventListener('click', async function(e) {
     e.preventDefault();
     fetch('/api/orders/delivery/bakery', {
         
