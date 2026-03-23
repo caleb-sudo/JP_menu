@@ -69,7 +69,7 @@ cp.addEventListener('click', async function() {
     createTable(data, count);
 });
 
-cd.addEvenListener('click', async function() {
+cd.addEventListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
     const response = await fetch(link);
     const countRes = await fetch(`${link}/count`);
@@ -78,7 +78,7 @@ cd.addEvenListener('click', async function() {
     createTable(data, count);
 });
 
-gp.addEvenListener('click', async function() {
+gp.addEventListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
     const response = await fetch(link);
     const countRes = await fetch(`${link}/count`);
@@ -87,7 +87,7 @@ gp.addEvenListener('click', async function() {
     createTable(data, count);
 });
                    
-gd.addEvenListener('click', async function() {
+gd.addEventListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
     const response = await fetch(link);
     const countRes = await fetch(`${link}/count`);
@@ -96,7 +96,7 @@ gd.addEvenListener('click', async function() {
     createTable(data, count);
 });
 
-bp.addEvenListener('click', async function() {
+bp.addEventListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
     const response = await fetch(link);
     const countRes = await fetch(`${link}/count`);
@@ -105,7 +105,7 @@ bp.addEvenListener('click', async function() {
     createTable(data, count);
 });
 
-gd.addEvenListener('click', async function() {
+gd.addEventListener('click', async function() {
     link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
     const response = await fetch(link);
     const countRes = await fetch(`${link}/count`);
