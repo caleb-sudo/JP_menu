@@ -8,7 +8,12 @@ const link = "";
 
 const table = document.getElementById('ordersTable');
 
-function createTable(data, count) {
+cp.addEventListener('click', async function() {
+    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+    const data = await response.json();
+    const count = await countRes.json();
     table.replaceChildren();
     table.innerHTML = `
     <tr>
@@ -58,15 +63,6 @@ function createTable(data, count) {
 
         table.appendChild(tr);
     }
-}
-
-cp.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
-    const data = await response.json();
-    const count = await countRes.json();
-    createTable(data, count);
 });
 
 cd.addEventListener('click', async function() {
@@ -75,7 +71,55 @@ cd.addEventListener('click', async function() {
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe/count');
     const data = await response.json();
     const count = await countRes.json();
-    createTable(data, count);
+    table.replaceChildren();
+    table.innerHTML = `
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer EPSB</th>
+        <th>Price</th>
+        <th>Time of Order</th>
+        <th>Items</th>
+        <th>Delete</th>
+    </tr>
+    `;
+    for (let i = 0; Number(count); i++) {
+        var tr = document.createElement('tr');
+
+        var id = document.createElement('tr');
+        id.innerHTML = data[i].orderNum;
+        tr.appendChild(id);
+
+        var name = document.createElement('td');
+        name.innerHTML = data[i].firstname + " " + data[i].lastname;
+        tr.appendChild(name);
+
+        var epsb = document.createElement('td');
+        epsb.innerHTML = data[i].epsb;
+        tr.appendChild(epsb);
+
+        var price = document.createElement('td');
+        price.innerHTML = "$" + data[i].price;
+        tr.appendChild(price);
+
+        var timeOfOrder = document.createElement('td');
+        timeOfOrder.innerHTML = data[i].ordertime;
+        tr.appendChild(timeOfOrder);
+
+        var items = document.createElement('td');
+        items.innerHTML = data[i].items;
+        tr.appendChild(items);
+
+        var del = document.createElement('td');
+        var delBtn = document.createElement('button');
+        delBtn.innerHTML = "delete order";
+        delBtn.classList = "deleteRowBtn";
+        delBtn.id = `delBtn${i}`;
+        del.appendChild(delBtn);
+        tr.appendChild(del);
+
+        table.appendChild(tr);
+    }
 });
 
 gp.addEventListener('click', async function() {
@@ -84,7 +128,55 @@ gp.addEventListener('click', async function() {
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global/count');
     const data = await response.json();
     const count = await countRes.json();
-    createTable(data, count);
+    table.replaceChildren();
+    table.innerHTML = `
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer EPSB</th>
+        <th>Price</th>
+        <th>Time of Order</th>
+        <th>Items</th>
+        <th>Delete</th>
+    </tr>
+    `;
+    for (let i = 0; Number(count); i++) {
+        var tr = document.createElement('tr');
+
+        var id = document.createElement('tr');
+        id.innerHTML = data[i].orderNum;
+        tr.appendChild(id);
+
+        var name = document.createElement('td');
+        name.innerHTML = data[i].firstname + " " + data[i].lastname;
+        tr.appendChild(name);
+
+        var epsb = document.createElement('td');
+        epsb.innerHTML = data[i].epsb;
+        tr.appendChild(epsb);
+
+        var price = document.createElement('td');
+        price.innerHTML = "$" + data[i].price;
+        tr.appendChild(price);
+
+        var timeOfOrder = document.createElement('td');
+        timeOfOrder.innerHTML = data[i].ordertime;
+        tr.appendChild(timeOfOrder);
+
+        var items = document.createElement('td');
+        items.innerHTML = data[i].items;
+        tr.appendChild(items);
+
+        var del = document.createElement('td');
+        var delBtn = document.createElement('button');
+        delBtn.innerHTML = "delete order";
+        delBtn.classList = "deleteRowBtn";
+        delBtn.id = `delBtn${i}`;
+        del.appendChild(delBtn);
+        tr.appendChild(del);
+
+        table.appendChild(tr);
+    }
 });
                    
 gd.addEventListener('click', async function() {
@@ -93,7 +185,55 @@ gd.addEventListener('click', async function() {
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global/count');
     const data = await response.json();
     const count = await countRes.json();
-    createTable(data, count);
+    table.replaceChildren();
+    table.innerHTML = `
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer EPSB</th>
+        <th>Price</th>
+        <th>Time of Order</th>
+        <th>Items</th>
+        <th>Delete</th>
+    </tr>
+    `;
+    for (let i = 0; Number(count); i++) {
+        var tr = document.createElement('tr');
+
+        var id = document.createElement('tr');
+        id.innerHTML = data[i].orderNum;
+        tr.appendChild(id);
+
+        var name = document.createElement('td');
+        name.innerHTML = data[i].firstname + " " + data[i].lastname;
+        tr.appendChild(name);
+
+        var epsb = document.createElement('td');
+        epsb.innerHTML = data[i].epsb;
+        tr.appendChild(epsb);
+
+        var price = document.createElement('td');
+        price.innerHTML = "$" + data[i].price;
+        tr.appendChild(price);
+
+        var timeOfOrder = document.createElement('td');
+        timeOfOrder.innerHTML = data[i].ordertime;
+        tr.appendChild(timeOfOrder);
+
+        var items = document.createElement('td');
+        items.innerHTML = data[i].items;
+        tr.appendChild(items);
+
+        var del = document.createElement('td');
+        var delBtn = document.createElement('button');
+        delBtn.innerHTML = "delete order";
+        delBtn.classList = "deleteRowBtn";
+        delBtn.id = `delBtn${i}`;
+        del.appendChild(delBtn);
+        tr.appendChild(del);
+
+        table.appendChild(tr);
+    }
 });
 
 bp.addEventListener('click', async function() {
@@ -102,7 +242,55 @@ bp.addEventListener('click', async function() {
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery/count');
     const data = await response.json();
     const count = await countRes.json();
-    createTable(data, count);
+    table.replaceChildren();
+    table.innerHTML = `
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer EPSB</th>
+        <th>Price</th>
+        <th>Time of Order</th>
+        <th>Items</th>
+        <th>Delete</th>
+    </tr>
+    `;
+    for (let i = 0; Number(count); i++) {
+        var tr = document.createElement('tr');
+
+        var id = document.createElement('tr');
+        id.innerHTML = data[i].orderNum;
+        tr.appendChild(id);
+
+        var name = document.createElement('td');
+        name.innerHTML = data[i].firstname + " " + data[i].lastname;
+        tr.appendChild(name);
+
+        var epsb = document.createElement('td');
+        epsb.innerHTML = data[i].epsb;
+        tr.appendChild(epsb);
+
+        var price = document.createElement('td');
+        price.innerHTML = "$" + data[i].price;
+        tr.appendChild(price);
+
+        var timeOfOrder = document.createElement('td');
+        timeOfOrder.innerHTML = data[i].ordertime;
+        tr.appendChild(timeOfOrder);
+
+        var items = document.createElement('td');
+        items.innerHTML = data[i].items;
+        tr.appendChild(items);
+
+        var del = document.createElement('td');
+        var delBtn = document.createElement('button');
+        delBtn.innerHTML = "delete order";
+        delBtn.classList = "deleteRowBtn";
+        delBtn.id = `delBtn${i}`;
+        del.appendChild(delBtn);
+        tr.appendChild(del);
+
+        table.appendChild(tr);
+    }
 });
 
 gd.addEventListener('click', async function() {
@@ -111,7 +299,55 @@ gd.addEventListener('click', async function() {
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery/count');
     const data = await response.json();
     const count = await countRes.json();
-    createTable(data, count);
+    table.replaceChildren();
+    table.innerHTML = `
+    <tr>
+        <th>Order ID</th>
+        <th>Customer Name</th>
+        <th>Customer EPSB</th>
+        <th>Price</th>
+        <th>Time of Order</th>
+        <th>Items</th>
+        <th>Delete</th>
+    </tr>
+    `;
+    for (let i = 0; Number(count); i++) {
+        var tr = document.createElement('tr');
+
+        var id = document.createElement('tr');
+        id.innerHTML = data[i].orderNum;
+        tr.appendChild(id);
+
+        var name = document.createElement('td');
+        name.innerHTML = data[i].firstname + " " + data[i].lastname;
+        tr.appendChild(name);
+
+        var epsb = document.createElement('td');
+        epsb.innerHTML = data[i].epsb;
+        tr.appendChild(epsb);
+
+        var price = document.createElement('td');
+        price.innerHTML = "$" + data[i].price;
+        tr.appendChild(price);
+
+        var timeOfOrder = document.createElement('td');
+        timeOfOrder.innerHTML = data[i].ordertime;
+        tr.appendChild(timeOfOrder);
+
+        var items = document.createElement('td');
+        items.innerHTML = data[i].items;
+        tr.appendChild(items);
+
+        var del = document.createElement('td');
+        var delBtn = document.createElement('button');
+        delBtn.innerHTML = "delete order";
+        delBtn.classList = "deleteRowBtn";
+        delBtn.id = `delBtn${i}`;
+        del.appendChild(delBtn);
+        tr.appendChild(del);
+
+        table.appendChild(tr);
+    }
 });
 
 async function deleteRow(id) {
