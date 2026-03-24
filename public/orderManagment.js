@@ -9,11 +9,6 @@ const link = "";
 const table = document.getElementById('ordersTable');
 
 cp.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
-    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
-    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
-    const data = await response.json();
-    const count = await countRes.json();
     table.replaceChildren();
     table.innerHTML = `
     <tr>
@@ -25,8 +20,12 @@ cp.addEventListener('click', async function() {
         <th>Items</th>
         <th>Delete</th>
     </tr>
-    `;
-    for (let i = 0; Number(count); i++) {
+    `
+    const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe');
+    const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/cafe/count');
+    const data = await response.json();
+    const count = await countRes.json();
+    for (let i = 0; i < Number(count[0].count); i++) {
         var tr = document.createElement('tr');
 
         var id = document.createElement('tr');
@@ -50,14 +49,12 @@ cp.addEventListener('click', async function() {
         tr.appendChild(timeOfOrder);
 
         var items = document.createElement('td');
-        items.innerHTML = data[i].items;
+        items.innerHTML = data[i].items
         tr.appendChild(items);
 
         var del = document.createElement('td');
         var delBtn = document.createElement('button');
         delBtn.innerHTML = "delete order";
-        delBtn.classList = "deleteRowBtn";
-        delBtn.id = `delBtn${i}`;
         del.appendChild(delBtn);
         tr.appendChild(del);
 
