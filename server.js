@@ -105,9 +105,9 @@ app.get('/api/orders/pickup/cafe/count', async (req, res) => {
 app.post('/api/orders/pickup/cafe', async (req, res) => {
 });
 app.delete('/api/orders/pickup/cafe/ordernum:id', async (req, res) => {
-    /*const id = req.param.ordernum;
+    const id = req.param.id;
     const result = sql`DELETE FROM cafePickup WHERE ordernum = ${id}`;
-    return res.status(200).send(result);*/
+    return res.status(200).send(result);
 });
 
 //global delivery
