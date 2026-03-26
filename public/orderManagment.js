@@ -9,6 +9,7 @@ const link = "";
 const table = document.getElementById('ordersTable');
 
 cp.addEventListener('click', async function() {
+    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/cafe";
     table.replaceChildren();
     table.innerHTML = `
     <tr>
@@ -55,6 +56,8 @@ cp.addEventListener('click', async function() {
         var del = document.createElement('td');
         var delBtn = document.createElement('button');
         delBtn.innerHTML = "delete order";
+        delBtn.classList = "delRowBtn";
+        delBtn.id = "delBtn" + i+1;
         del.appendChild(delBtn);
         tr.appendChild(del);
 
@@ -63,7 +66,7 @@ cp.addEventListener('click', async function() {
 });
 
 cd.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
+    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/cafe";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/cafe/count');
     const data = await response.json();
@@ -120,7 +123,7 @@ cd.addEventListener('click', async function() {
 });
 
 gp.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
+    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/global";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/global/count');
     const data = await response.json();
@@ -177,7 +180,7 @@ gp.addEventListener('click', async function() {
 });
                    
 gd.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
+    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/global";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/global/count');
     const data = await response.json();
@@ -234,7 +237,7 @@ gd.addEventListener('click', async function() {
 });
 
 bp.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
+    link = "https://jp-menu-psi.vercel.app/api/orders/pickup/bakery";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/pickup/bakery/count');
     const data = await response.json();
@@ -291,7 +294,7 @@ bp.addEventListener('click', async function() {
 });
 
 gd.addEventListener('click', async function() {
-    //link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
+    link = "https://jp-menu-psi.vercel.app/api/orders/delivery/bakery";
     const response = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery');
     const countRes = await fetch('https://jp-menu-psi.vercel.app/api/orders/delivery/bakery/count');
     const data = await response.json();
@@ -347,8 +350,19 @@ gd.addEventListener('click', async function() {
     }
 });
 
-async function deleteRow(id) {
-    const response = await fetch(`${link}:${id}`, {
+async function deleteRow() {
+    const countRows = await fetch(`${link}/count`);
+    const count = await countRows.json();
+    for (let i = 0; i < Number(count); i++) {
+        var id = Number(count) - 1;
+        var btn = document.getElementById(`delBtn${id}`);
+        btn.addEventListener('click', async function() {
+            const response = await fetch(`${link}:${id}`, {
+                method: 'DELETE'
+            });
+        });
+    }
+    /*const response = await fetch(`${link}:${id}`, {
         method: 'DELETE'
-    });
+    });*/
 }
