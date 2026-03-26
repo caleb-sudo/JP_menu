@@ -92,7 +92,13 @@ app.get('/api/orders/pickup/cafe/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/cafe', async (req, res) => {
 });
-app.delete('/api/orders/pickup/cafe:id', async (req, res) => {
+app.delete('/api/orders/pickup/cafe:ordernum', async (req, res) => {
+    let { ORDER_NUM } = req.param.ordernum;
+    const query = sql`DELETE FROM cafePickup WHERE ordernum = ?`;
+    connection.query(query, {error, request, field} => {
+        if (error) return console.error("Error: " + error);
+        res.send(results);
+    });
 });
 
 //global delivery
