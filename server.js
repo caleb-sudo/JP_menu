@@ -43,13 +43,14 @@ app.get('/api/orders/delivery/bakery/count', async (req, res) => {
     const result = await sql`SELECT COUNT(*) FROM "bakeryDelivery";`;
     return res.status(200).send(result);
 });
-app.post('/api/orders/delivery/bakery/firstName:fn/lastName:ln/epsb:epsb/price:price/numOfitems:numOfItems/items:items/roomNum:roomNum', async (req, res) => {
-    /*const fn = req.param.fn;
+app.post('/api/orders/delivery/bakery/firstName:fn/lastName:ln/epsbNum:epsb/totalPrice:price/numOfitemsArr:numOfItems/itemsArr:items/roomNum:room', async (req, res) => {
+    const fn = req.param.fn;
     const ln = req.param.ln;
     const epsb = req.param.epsb;
+    const price = req.param.price;
     const numOfItems = req.param.numOfItems.split(',');
     const items = req.param.items.split(',');
-    const roomNum = req.param.roomNum;
+    const roomNum = req.param.room;
 
     let itemsArr = [ ];
     for (let i = 0; i < items.length; i++) {
@@ -60,7 +61,7 @@ app.post('/api/orders/delivery/bakery/firstName:fn/lastName:ln/epsb:epsb/price:p
     }
     
     const result = await sql`INSERT INTO bakeryDelivery (firstName, lastName, epsb, price, orderTime, items, roomNum) VALUES (${fn}, ${ln}, ${epsb}, ${price}, NOW(), ${itemsArr}, ${roomNum})`;
-    return res.status(200).send(result);*/
+    return res.status(200).send(result);
 });
 app.delete('/api/orders/delivery/bakery/ordernum:id', async (req, res) => {
 });
