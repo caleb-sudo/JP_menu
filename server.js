@@ -103,13 +103,11 @@ app.get('/api/orders/pickup/cafe/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/cafe', async (req, res) => {
 });
-app.delete('/api/orders/pickup/cafe/ordernum/:id', async (req, res) => {
-    const { id } = req.params;
-    const result = sql`DELETE FROM cafePickup WHERE ordernum = ${id} RETURNING *;`;
-    if (result.length == 0) {
-        console.log("Order not found");
-        return res.status(404).json({ message: 'Order not found' });
-    } else return res.status(204).send(result);
+app.delete('/api/orders/pickup/cafe', async (req, res) => {
+    //const { id } = req.params;
+    const result = sql`DELETE FROM "cafePickup" WHERE firstname = 'rene';`;
+    if (result.length == 0) return res.status(404).send('Order not found');
+    else return res.status(204).send(result);
 });
 
 //global delivery

@@ -9,8 +9,8 @@ var totalPrice = 0;
 var isDrink = false;
 
 function hide(element, hide) {
-    if (hide == true) return element.style.display = "none";
-    if (hide == false) return element.style.display = "block";
+    if (hide == true) return element.style.display = 'none';
+    if (hide == false) return element.style.display = 'block';
 }
 
 addItemsToPage(activeMenu);
@@ -21,12 +21,12 @@ cafe.addEventListener("click", function() {
     totalPrice = 0;
     activeMenu = cafeMenu;
     activeMenuName = "Cafe";
-    cafe.style.backgroundColor = "#ddd";
-    cafe.style.color = "black";
-    glob.style.backgroundColor = "#333333";
-    glob.style.color = "white";
-    bake.style.backgroundColor = "#333333";
-    bake.style.color = "white";
+    cafe.style.backgroundColor = '#ddd';
+    cafe.style.color = 'black';
+    glob.style.backgroundColor = '#333333';
+    glob.style.color = 'white';
+    bake.style.backgroundColor = '#333333';
+    bake.style.color = 'white';
     addItemsToPage(activeMenu);
     addItemsToPage(drinks);
 });
@@ -35,12 +35,12 @@ glob.addEventListener("click", function() {
     totalPrice = 0;
     activeMenu = globalMenu;
     activeMenuName = "Global";
-    glob.style.backgroundColor = "#ddd";
-    glob.style.color = "black";
-    cafe.style.backgroundColor = "#333333";
-    cafe.style.color = "white";
-    bake.style.backgroundColor = "#333333";
-    bake.style.color = "white";
+    glob.style.backgroundColor = '#ddd';
+    glob.style.color = 'black';
+    cafe.style.backgroundColor = '#333333';
+    cafe.style.color = 'white';
+    bake.style.backgroundColor = '#333333';
+    bake.style.color = 'white';
     addItemsToPage(activeMenu);
     addItemsToPage(drinks);
 });
@@ -49,12 +49,12 @@ bake.addEventListener("click", function() {
     totalPrice = 0;
     activeMenu = bakeryMenu;
     activeMenuName = "Bakery";
-    bake.style.backgroundColor = "#ddd";
-    bake.style.color = "black";
-    glob.style.backgroundColor = "#333333";
-    glob.style.color = "white";
-    cafe.style.backgroundColor = "#333333";
-    cafe.style.color = "white";
+    bake.style.backgroundColor = '#ddd';
+    bake.style.color = 'black';
+    glob.style.backgroundColor = '#333333';
+    glob.style.color = 'white';
+    cafe.style.backgroundColor = '#333333';
+    cafe.style.color = 'white';
     addItemsToPage(activeMenu);
     addItemsToPage(drinks);
 });
@@ -89,7 +89,7 @@ function addItemsToPage(items) {
             add.classList = "addItemBtns";
             add.id = items[i].id + "add";
             add.innerHTML = "+";
-            add.style.marginLeft = "10px";
+            add.style.marginLeft = '10px';
             cont.appendChild(add);
             let rem = document.createElement('button');
             rem.classList = "remItemBtns";
@@ -202,14 +202,14 @@ function isValidRoomNum(room) {
 }
 
 function buildOrder() {
-    //document.body.style.overflow = "hidden";
+    //document.body.style.overflow = 'hidden';
     var modal = document.getElementsByClassName('modal');
     itemsList.replaceChildren();
 	for (let i = 0; i < activeMenu.length; i++) {
         showPrice(totalL);
 		if (activeMenu[i].quantity > 0) {
 			let li = document.createElement('li');
-            li.style.padding = "none";
+            li.style.padding = 'none';
 			itemsList.appendChild(li);
 			let div = document.createElement('div');
             div.classList = "orderItem";
@@ -248,18 +248,18 @@ function openOrder() {
 
 function closeOrder() {
     hide(orderModal, true);
-    //document.body.style.overflow = "auto";
+    //document.body.style.overflow = 'auto';
 }
 
 function openInformation() {
     hide(informationModal, false);
     closeOrder();
-    //document.body.style.overflow = "hidden";
+    //document.body.style.overflow = 'hidden';
 }
 
 function closeInformation() {
     hide(informationModal, true);
-    //document.body.style.overflow = "auto";
+    //document.body.style.overflow = 'auto';
 }
 
 const form = document.getElementById('form');
