@@ -1,5 +1,3 @@
-//require('dotenv').config();
-
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
@@ -63,7 +61,7 @@ app.post('/api/orders/delivery/bakery/firstName:fn/lastName:ln/epsbNum:epsb/tota
     const result = await sql`INSERT INTO bakeryDelivery (firstName, lastName, epsb, price, orderTime, items, roomNum) VALUES (${fn}, ${ln}, ${epsb}, ${price}, NOW(), ${itemsArr}, ${roomNum})`;
     return res.status(200).send(result);*/
 });
-app.delete('/api/orders/delivery/bakery/ordernum:id', async (req, res) => {
+app.delete('/api/orders/delivery/bakery/ordernum/:id', async (req, res) => {
 });
 
 //backery pickup
@@ -77,7 +75,7 @@ app.get('/api/orders/pickup/bakery/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/bakery', async (req, res) => {
 });
-app.delete('/api/orders/pickup/bakery/ordernum:id', async (req, res) => {
+app.delete('/api/orders/pickup/bakery/ordernum/:id', async (req, res) => {
 });
 
 //cafe delivery
@@ -91,7 +89,7 @@ app.get('/api/orders/delivery/cafe/count', async (req, res) => {
 });
 app.post('/api/orders/delivery/cafe', async (req, res) => {
 });
-app.delete('/api/orders/delivery/cafe/ordernum:id', async (req, res) => {
+app.delete('/api/orders/delivery/cafe/ordernum/:id', async (req, res) => {
 });
 
 //cafe pickup
@@ -105,10 +103,13 @@ app.get('/api/orders/pickup/cafe/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/cafe', async (req, res) => {
 });
-app.delete('/api/orders/pickup/cafe/ordernum:id', async (req, res) => {
-    const id = req.param.id;
-    const result = sql`DELETE FROM cafePickup WHERE ordernum = ${id}`;
-    return res.status(200).send(result);
+app.delete('/api/orders/pickup/cafe/ordernum/:id', async (req, res) => {
+    const { id } = req.params;
+    const result = sql`DELETE FROM cafePickup WHERE ordernum = ${id} RETURNING *;`;
+    if (result.length == 0) {
+        console.log("Order not found");
+        return res.status(404).json({ message: 'Order not found' });
+    } else return res.status(204).send(result);
 });
 
 //global delivery
@@ -122,7 +123,7 @@ app.get('/api/orders/delivery/global/count', async (req, res) => {
 });
 app.post('/api/orders/delivery/global', async (req, res) => {
 });
-app.delete('/api/orders/delivery/global/ordernum:id', async (req, res) => {
+app.delete('/api/orders/delivery/global/ordernum/:id', async (req, res) => {
 });
 
 //global pickup
@@ -136,7 +137,7 @@ app.get('/api/orders/pickup/global/count', async (req, res) => {
 });
 app.post('/api/orders/pickup/global', async (req, res) => {
 });
-app.delete('/api/orders/pickup/global/ordernum:id', async (req, res) => {
+app.delete('/api/orders/pickup/global/ordernum/:id', async (req, res) => {
 });
 
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));

@@ -4,7 +4,7 @@ const gp = document.getElementById('GlobalP');
 const gd = document.getElementById('GlobalD');
 const bp = document.getElementById('BakeryP');
 const bd = document.getElementById('BakeryD');
-const link = "";
+var link = "";
 
 const table = document.getElementById('ordersTable');
 
@@ -57,7 +57,7 @@ cp.addEventListener('click', async function() {
         var delBtn = document.createElement('button');
         delBtn.innerHTML = "delete order";
         delBtn.classList = "delRowBtn";
-        delBtn.id = "delBtn" + i+1;
+        delBtn.id = "delBtn" + (i + 1);
         del.appendChild(delBtn);
         tr.appendChild(del);
 
@@ -114,7 +114,7 @@ cd.addEventListener('click', async function() {
         var delBtn = document.createElement('button');
         delBtn.innerHTML = "delete order";
         delBtn.classList = "deleteRowBtn";
-        delBtn.id = `delBtn${i}`;
+        delBtn.id = "delBtn" + (i + 1);
         del.appendChild(delBtn);
         tr.appendChild(del);
 
@@ -350,18 +350,24 @@ gd.addEventListener('click', async function() {
     }
 });
 
-async function deleteRow() {
+async function deleteRow(id) {
+    var btn = document.getElementById(`delBtn${id}`);
+    btn.addEventListener('click', async function() {
+        const response = await fetch(`${link}/ordernum/${id}`, {
+            method: 'DELETE'
+        });
+    });
+    /*const response = await fetch(`${link}/ordernum/${id}`);
     const countRows = await fetch(`${link}/count`);
     const count = await countRows.json();
     for (let i = 0; i < Number(count); i++) {
-        var id = Number(count) - 1;
         var btn = document.getElementById(`delBtn${id}`);
         btn.addEventListener('click', async function() {
             const response = await fetch(`${link}:${id}`, {
                 method: 'DELETE'
             });
         });
-    }
+    }*/
     /*const response = await fetch(`${link}:${id}`, {
         method: 'DELETE'
     });*/
